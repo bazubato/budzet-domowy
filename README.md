@@ -2,7 +2,7 @@ Budżet Domowy 💼
 
 Osobista aplikacja do zarządzania budżetem domowym — zbudowana jako projekt portfolio przy współpracy z Claude (Anthropic). Motyw wizualny: zeszyt w kratkę, z czytelną, nowoczesną typografią dopasowaną do danych finansowych.
 
-Live demo: budzet-domowy-app-beta.vercel.app
+Live demo: https://budzet-domowyapp.vercel.app/
 
 Funkcje
 
