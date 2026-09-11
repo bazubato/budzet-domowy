@@ -1,0 +1,25 @@
+{
+  "name": "Budżet Domowy",
+  "short_name": "Budżet",
+  "description": "Osobisty budżet domowy: kategorie, cele oszczędnościowe, transakcje cykliczne i analiza finansów.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF8F1",
+  "theme_color": "#17213A",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
