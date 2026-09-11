@@ -1,95 +1,74 @@
-# Budżet Domowy
+Budżet Domowy 💼
 
-Aplikacja do zarządzania budżetem domowym: kategorie z limitami, cele
-oszczędnościowe, transakcje cykliczne, porównania miesięczne, podsumowanie
-roczne i prosta analiza finansów.
+Osobista aplikacja do zarządzania budżetem domowym — zbudowana jako projekt portfolio przy współpracy z Claude (Anthropic). Motyw wizualny: zeszyt w kratkę, z czytelną, nowoczesną typografią dopasowaną do danych finansowych.
 
-## Ważne: gdzie trzymane są dane
+Live demo: budzet-domowy-app-beta.vercel.app
 
-Aplikacja zapisuje dane w **`localStorage` przeglądarki** — czyli lokalnie,
-na tym konkretnym urządzeniu i w tej konkretnej przeglądarce. To oznacza:
+Funkcje
 
-- Dane **nie synchronizują się** między telefonem a komputerem ani między
-  różnymi przeglądarkami.
-- Wyczyszczenie danych przeglądarki (albo tryb prywatny/incognito) usunie
-  zapisy.
-- **Rób regularnie kopię zapasową** przez zakładkę „dane" w aplikacji
-  (eksport JSON) — to jedyny sposób na przeniesienie danych między
-  urządzeniami albo ich odzyskanie.
+Przegląd
 
-Jeśli w przyszłości zechcesz synchronizacji między urządzeniami, trzeba
-będzie dodać prawdziwy backend (np. bazę danych i logowanie) — to już
-osobny, większy projekt.
+Bilans miesiąca na pierwszy rzut oka: wpływy, wydatki, ile jeszcze można wydać do końca miesiąca (z uwzględnieniem zaplanowanych wpłat na cele)
+Największa kategoria wydatków, największy pojedynczy wydatek, dni pozostałe do końca miesiąca
+Porównanie z poprzednim miesiącem — ogólne i wg kategorii
 
-## Uruchomienie lokalne
+Zapisy
 
-Wymagany [Node.js](https://nodejs.org) (wersja 18 lub nowsza).
+Dodawanie wydatków i wpływów z kategorią, kwotą, datą i notatką
+Pełna edycja już dodanych wpisów — bez konieczności usuwania i dodawania od nowa
+Własny okres czasu do przeglądania danych (nie tylko pełny miesiąc)
 
-```bash
-npm install
-npm run dev
-```
+Kategorie
 
-Aplikacja wystartuje pod adresem pokazanym w terminalu (zwykle
-`http://localhost:5173`).
+Dowolne własne kategorie z opcjonalnym limitem budżetu
+Zmiana nazwy kategorii — automatycznie aktualizuje historię wcześniejszych zapisów
+Kolorowe oznaczenia i pasek wykorzystania limitu
 
-## Budowanie wersji produkcyjnej
+Cele oszczędnościowe
 
-```bash
-npm run build
-```
+Cele z kwotą docelową, terminem i śledzeniem wpłat
+Wyliczanie sugerowanej miesięcznej wpłaty, żeby zdążyć na czas
 
-Gotowa, statyczna wersja aplikacji trafi do folderu `dist/`.
+Transakcje cykliczne
 
-## Wystawienie w internecie
+Stałe wydatki i wpływy (np. czynsz, wynagrodzenie) — tygodniowe, miesięczne, roczne
+Automatyczne dopisywanie do zapisów w odpowiednim terminie, bez duplikatów
 
-### Opcja A: Vercel lub Netlify (najprostsze)
+Rok
 
-1. Wrzuć ten folder jako repozytorium na GitHub (patrz niżej).
-2. Załóż darmowe konto na [vercel.com](https://vercel.com) lub
-   [netlify.com](https://netlify.com).
-3. Połącz swoje repozytorium z GitHuba — obie platformy same wykryją, że to
-   projekt Vite, i zbudują go automatycznie. Nie trzeba nic konfigurować.
-4. Po chwili dostaniesz gotowy adres (np. `budzet-domowy.vercel.app`).
+Podsumowanie roczne: średnie miesięczne, najlepszy/najdroższy miesiąc, ranking kategorii, wykres wpływów i wydatków w każdym miesiącu
 
-### Opcja B: GitHub Pages
+Analiza
 
-```bash
-npm run deploy
-```
+Automatyczne spostrzeżenia liczone wyłącznie na podstawie realnych danych (bez losowych porad): wzrosty wydatków względem średniej, tempo oszczędzania na cele, ostrzeżenia o zbliżającym się limicie
 
-To polecenie zbuduje aplikację i wypchnie ją na gałąź `gh-pages` w Twoim
-repozytorium. W ustawieniach repozytorium na GitHubie (Settings → Pages)
-wybierz jako źródło gałąź `gh-pages`.
+Dane
 
-## Wrzucenie na GitHub (jeśli jeszcze nie masz repozytorium)
+Eksport do CSV i pełnej kopii zapasowej JSON
+Import z potwierdzeniem przed nadpisaniem danych
 
-```bash
-git init
-git add .
-git commit -m "Pierwsza wersja aplikacji budżet domowy"
-git branch -M main
-git remote add origin https://github.com/TWOJA-NAZWA/budzet-domowy.git
-git push -u origin main
-```
+Personalizacja
 
-(Wcześniej załóż puste repozytorium na github.com — bez README, bez
-.gitignore, żeby uniknąć konfliktów przy pierwszym push).
+Nazwy wszystkich zakładek można zmienić na własne
+Ważne: gdzie trzymane są dane
 
-## Struktura projektu
+Aplikacja zapisuje dane w localStorage przeglądarki — czyli lokalnie, na tym konkretnym urządzeniu i w tej konkretnej przeglądarce. To oznacza:
 
-```
-├── index.html          punkt wejścia HTML
-├── src/
-│   ├── main.jsx         start aplikacji, podpięcie localStorage
-│   ├── App.jsx           cały komponent aplikacji (logika + wygląd)
-│   ├── storage.js        zamiennik window.storage oparty o localStorage
-│   └── index.css         minimalny reset stylów
-├── package.json
-└── vite.config.js
-```
+Dane nie synchronizują się między telefonem a komputerem ani między różnymi przeglądarkami.
+Wyczyszczenie danych przeglądarki (albo tryb prywatny/incognito) usunie zapisy.
+Rób regularnie kopię zapasową przez zakładkę „dane" w aplikacji (eksport JSON) — to jedyny sposób na przeniesienie danych między urządzeniami albo ich odzyskanie.
 
-Cała logika i wygląd aplikacji znajdują się w jednym pliku — `src/App.jsx`
-— dokładnie takim, jaki był rozwijany jako artefakt w Claude.ai. Jedyna
-różnica funkcjonalna względem wersji z Claude.ai to sposób zapisu danych
-(`localStorage` zamiast `window.storage`).
+Jeśli w przyszłości zajdzie potrzeba synchronizacji między urządzeniami, wymagałoby to dodania prawdziwego backendu (baza danych, logowanie) — to już osobny, większy projekt.
+
+Instalacja na telefonie (jak zwykła aplikacja)
+
+Aplikacja ma wbudowaną obsługę „Dodaj do ekranu głównego" — po wdrożeniu będzie miała własną ikonę i otwierać się na pełnym ekranie, bez paska przeglądarki.
+
+Otwórz adres aplikacji w przeglądarce na telefonie.
+iPhone (Safari): stuknij ikonę „Udostępnij" (kwadrat ze strzałką) na dole ekranu → „Dodaj do ekranu początkowego".
+Android (Chrome): stuknij trzy kropki w prawym górnym rogu → „Dodaj do ekranu głównego" (albo Chrome sam zaproponuje to jako baner „Zainstaluj aplikację").
+Stos technologiczny
+React + Vite
+lucide-react — ikony
+Czyste CSS (custom properties, bez frameworków UI)
+localStorage do przechowywania danych (zamiennik window.storage z artefaktów Claude.ai — patrz src/storage.js)
